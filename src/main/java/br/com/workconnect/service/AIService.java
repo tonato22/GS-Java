@@ -20,6 +20,8 @@ public class AIService {
 
     public String generateSummary(String text) {
 
+        System.out.println("🚨 API KEY (SUMMARY) = " + apiKey);
+
         String url = "https://api.openai.com/v1/chat/completions";
 
         HttpHeaders headers = new HttpHeaders();
@@ -46,6 +48,8 @@ public class AIService {
     }
 
     public String suggestTitle(String text) {
+
+        System.out.println("🚨 API KEY (TITLE) = " + apiKey);
 
         String url = "https://api.openai.com/v1/chat/completions";
 
