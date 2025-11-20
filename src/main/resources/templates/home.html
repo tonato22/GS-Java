@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>WorkConnect</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #e3f2fd, #ffffff);
+            color: #333;
+        }
+
+        .navbar {
+            background: #1a73e8;
+            padding: 18px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .navbar-title {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .hero {
+            max-width: 700px;
+            margin: 80px auto;
+            text-align: center;
+            padding: 25px;
+        }
+
+        h1 {
+            font-size: 45px;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #1a73e8, #43a047);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        p {
+            font-size: 20px;
+            margin-top: 10px;
+            color: #555;
+        }
+
+        .buttons {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            font-size: 17px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            transition: 0.25s;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .btn-login {
+            background: #1a73e8;
+        }
+
+        .btn-register {
+            background: #43a047;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 80px;
+            color: #888;
+            font-size: 14px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="navbar-title">WorkConnect</div>
+</div>
+
+<div class="hero">
+    <h1>Aprenda. Compartilhe. Conecte.</h1>
+
+    <p>
+        O WorkConnect aproxima pessoas, desenvolve talentos e cria conexões reais
+        através da aprendizagem colaborativa.
+    </p>
+
+    <div class="buttons">
+        <a href="/login" class="btn btn-login">Entrar</a>
+        <a href="/register" class="btn btn-register">Criar Conta</a>
+    </div>
+</div>
+
+<div class="footer">
+    © 2025 WorkConnect — Todos os direitos reservados.
+</div>
+
+</body>
+</html>

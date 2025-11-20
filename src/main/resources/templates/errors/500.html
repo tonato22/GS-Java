@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Erro 500 - WorkConnect</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f5f7fb;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 80px auto;
+            background: #ffffff;
+            padding: 45px;
+            border-radius: 18px;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.08);
+            text-align: center;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 38px;
+            margin-bottom: 15px;
+            color: #c62828;
+            font-weight: 800;
+        }
+
+        .emoji {
+            font-size: 70px;
+            margin-bottom: 10px;
+        }
+
+        .msg {
+            font-size: 18px;
+            margin-bottom: 18px;
+            color: #555;
+        }
+
+        .msg2 {
+            font-size: 15px;
+            margin-bottom: 30px;
+            color: #777;
+        }
+
+        .btn-back {
+            display: inline-block;
+            background: #1a73e8;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 600;
+            transition: .25s;
+        }
+
+        .btn-back:hover {
+            background: #1668c3;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transform: translateY(-3px);
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+
+
+<div class="container">
+
+    <div class="emoji">⚠️</div>
+
+    <h1>Erro Interno do Servidor</h1>
+
+    <p class="msg" th:text="${message}">
+        Ocorreu um erro inesperado em nosso sistema.
+    </p>
+
+    <p class="msg2">
+        Já estamos trabalhando para resolver isso.
+        Por favor, tente novamente mais tarde ou entre em contato com o suporte.
+    </p>
+
+    <a href="/dashboard" class="btn-back">← Voltar ao Dashboard</a>
+
+</div>
+
+</body>
+</html>

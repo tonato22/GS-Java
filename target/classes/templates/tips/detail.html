@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Detalhes da Dica - WorkConnect</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f5f7fb;
+            color: #333;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.10);
+        }
+
+        h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+            font-weight: bold;
+        }
+
+        .content {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            color: #444;
+        }
+
+        .info-box {
+            background: #f0f3fa;
+            padding: 18px;
+            border-radius: 12px;
+            font-size: 15px;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .info-row {
+            margin-bottom: 6px;
+        }
+
+        .back-link {
+            display: inline-block;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            color: #1a73e8;
+            transition: .25s;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+            transform: translateX(-3px);
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+
+<div class="container">
+
+    <h2 th:text="${tip.title}">Título da Dica</h2>
+
+    <div class="content" th:text="${tip.content}">
+        Aqui vai o conteúdo detalhado da dica.
+    </div>
+
+    <div class="info-box">
+        <div class="info-row">
+            <strong th:text="#{tips.category}">Categoria:</strong>
+            <span th:text="${tip.category}"></span>
+        </div>
+
+        <div class="info-row">
+            <strong th:text="#{tips.author}">Autor:</strong>
+            <span th:text="${tip.author.name}"></span>
+        </div>
+
+        <div class="info-row">
+            <strong>Criado em:</strong>
+            <span th:text="${tip.createdAt}"></span>
+        </div>
+    </div>
+
+    <a href="/tips" class="back-link" th:text="#{tips.back}">← Voltar</a>
+
+</div>
+
+</body>
+</html>

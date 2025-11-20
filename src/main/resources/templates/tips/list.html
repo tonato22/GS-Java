@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title th:text="#{tips.title}">Dicas - WorkConnect</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f5f7fb;
+            color: #333;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 25px;
+        }
+
+        h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1a1a1a;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .btn-new {
+            background: #1a73e8;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: .25s;
+            display: inline-block;
+        }
+
+        .btn-new:hover {
+            background: #1668c3;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+            transform: translateY(-2px);
+        }
+
+        .tip-card {
+            background: #ffffff;
+            padding: 22px;
+            border-radius: 14px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            margin-top: 25px;
+            transition: .25s;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .tip-title {
+            font-size: 22px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .tip-content {
+            color: #555;
+            margin-bottom: 12px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        .info {
+            font-size: 14px;
+            color: #777;
+        }
+
+        .more-link {
+            display: inline-block;
+            margin-top: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            color: #1a73e8;
+        }
+
+        .more-link:hover {
+            text-decoration: underline;
+        }
+
+        .pagination {
+            margin-top: 35px;
+            text-align: center;
+            font-size: 15px;
+        }
+
+        .pagination a {
+            text-decoration: none;
+            color: #1a73e8;
+            margin: 0 10px;
+            font-weight: 600;
+        }
+
+        .success {
+            color: #2e7d32;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+
+<div class="container">
+
+    <h2 th:text="#{tips.title}">Dicas Compartilhadas</h2>
+
+    <a href="/tips/new" class="btn-new" th:text="#{tips.new}">Nova Dica</a>
+
+    <p th:if="${param.created}" class="success" th:text="#{tips.created}">
+        Dica criada com sucesso!
+    </p>
+
+    <div th:each="tip : ${tipsPage.content}" class="tip-card">
+
+        <div class="tip-title" th:text="${tip.title}"></div>
+
+        <div class="tip-content" th:text="${tip.content}"></div>
+
+        <div class="info">
+            <strong th:text="#{tips.category}"></strong>:
+            <span th:text="${tip.category}"></span> |
+            <strong th:text="#{tips.author}"></strong>:
+            <span th:text="${tip.author.name}"></span> |
+            Criado em:
+            <span th:text="${tip.createdAt}"></span>
+        </div>
+
+        <a th:href="@{/tips/{id}(id=${tip.id})}" class="more-link">
+            Ver mais →
+        </a>
+    </div>
+
+    <div class="pagination">
+        <a th:if="${!tipsPage.first}" th:href="@{'/tips'(page=${currentPage-1})}">
+            ← Anterior
+        </a>
+
+        <span>
+            Página [[${currentPage + 1}]] de [[${tipsPage.totalPages}]]
+        </span>
+
+        <a th:if="${!tipsPage.last}" th:href="@{'/tips'(page=${currentPage+1})}">
+            Próxima →
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

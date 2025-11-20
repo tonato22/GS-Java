@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Nova Dica - IA</title>
+
+    <!-- ESTILO GLOBAL -->
+    <style>
+        body {
+            background: #f5f7fb;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            color: #333;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            margin-bottom: 25px;
+            color: #1a1a1a;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+            color: #444;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #d9d9d9;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+            transition: 0.2s border;
+            background: #fafafa;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #1a73e8;
+            background: #fff;
+        }
+
+        .section {
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            padding: 12px;
+            font-size: 15px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-top: 8px;
+            width: 100%;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .btn-ia-title {
+            background: #6a1b9a;
+            color: white;
+        }
+
+        .btn-ia-summary {
+            background: #00897b;
+            color: white;
+        }
+
+        .btn-submit {
+            background: #1a73e8;
+            color: white;
+            font-size: 17px;
+            margin-top: 10px;
+        }
+
+    </style>
+
+    <!-- JS IA -->
+    <script>
+        async function generateSummary() {
+            const content = document.getElementById("content").value;
+
+            const response = await fetch("/ai/summary", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({ content: content })
+            });
+
+            const data = await response.json();
+            document.getElementById("content").value = data.result;
+        }
+
+        async function generateTitle() {
+            const content = document.getElementById("content").value;
+
+            const response = await fetch("/ai/title", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({ content: content })
+            });
+
+            const data = await response.json();
+            document.getElementById("title").value = data.result;
+        }
+    </script>
+
+</head>
+
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+
+<div class="container">
+
+    <h2>📘 Criar Nova Dica</h2>
+
+    <form th:action="@{/tips/new}" th:object="${tip}" method="post">
+
+        <!-- TÍTULO -->
+        <div class="section">
+            <label>Título da Dica</label>
+            <input id="title" th:field="*{title}" placeholder="Ex: Como melhorar seu código Java">
+            <button type="button" class="btn btn-ia-title" onclick="generateTitle()">
+                ✨ Gerar Título com IA
+            </button>
+        </div>
+
+        <!-- CONTEÚDO -->
+        <div class="section">
+            <label>Conteúdo</label>
+            <textarea id="content" th:field="*{content}" rows="7"
+                      placeholder="Digite aqui o conteúdo da sua dica..."></textarea>
+
+            <button type="button" class="btn btn-ia-summary" onclick="generateSummary()">
+                🤖 Resumir Conteúdo com IA
+            </button>
+        </div>
+
+        <!-- CATEGORIA -->
+        <div class="section">
+            <label>Categoria</label>
+            <input th:field="*{category}" placeholder="Ex: Java, Backend, Carreira">
+        </div>
+
+        <button type="submit" class="btn btn-submit">
+            🚀 Publicar Dica
+        </button>
+
+    </form>
+</div>
+
+</body>
+</html>
