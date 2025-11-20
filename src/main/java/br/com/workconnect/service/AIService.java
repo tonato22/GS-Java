@@ -20,7 +20,6 @@ public class AIService {
 
     public String generateSummary(String text) {
 
-        System.out.println("🚨 API KEY (SUMMARY) = " + apiKey);
 
         String url = "https://api.openai.com/v1/chat/completions";
 
