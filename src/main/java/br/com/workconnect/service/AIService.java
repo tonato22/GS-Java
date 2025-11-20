@@ -1,5 +1,6 @@
 package br.com.workconnect.service;
 
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
@@ -74,4 +75,10 @@ public class AIService {
 
         return message.get("content").toString();
     }
+
+    @PostConstruct
+    public void debugKey() {
+        System.out.println("🔥 OPENAI KEY RECEBIDA: " + apiKey);
+    }
+
 }
