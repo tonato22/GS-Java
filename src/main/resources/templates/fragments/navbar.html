@@ -8,7 +8,7 @@
             justify-content: space-between;
             align-items: center;
             color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.10);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.10);
             font-family: "Segoe UI", Arial, sans-serif;
         }
 
@@ -58,12 +58,16 @@
     </style>
 
     <nav class="navbar">
-        <a href="/dashboard" class="logo">WorkConnect</a>
+        <!-- Logo com i18n -->
+        <a th:href="@{/dashboard}" class="logo" th:text="#{app.title}">WorkConnect</a>
 
         <div class="navbar-links">
+            <!-- Troca de idioma -->
             <a href="?lang=pt_BR">PT</a>
             <a href="?lang=en_US">EN</a>
-            <a href="/logout">Sair</a>
+
+            <!-- Logout com i18n -->
+            <a th:href="@{/logout}" th:text="#{navbar.logout}">Logout</a>
         </div>
     </nav>
 
