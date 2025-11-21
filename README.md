@@ -249,7 +249,9 @@ POST `https://workconnect-cloud.app/ai/summary`
 ---
 
 # 👥 **Integrantes**
-- **Diogo Weyne** – Desenvolvedor Fullstack  
+- **Gustavo Tonato** - RM555393
+- **Diogo Weyne** – RM558380
+- **João Victor de souza** - RM555290  
 - (adicione outros nomes)
 
 ---
