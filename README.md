@@ -252,7 +252,7 @@ POST `https://workconnect-cloud.app/ai/summary`
 - **Gustavo Tonato** - RM555393
 - **Diogo Weyne** – RM558380
 - **João Victor de souza** - RM555290  
-- (adicione outros nomes)
+
 
 ---
 
